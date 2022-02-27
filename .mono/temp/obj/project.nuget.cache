@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Es6g4eyhW2/aGYJZFwZUdJVTdK9uQuHC6o3vMORkq1/y9Z598QhUY/3NoSvNARiWvm35is//yYZaR1in+hrI3g==",
+  "success": true,
+  "projectFilePath": "/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/Platformer.csproj",
+  "expectedPackageFiles": [
+    "/home/phenegan/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.2/microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "/home/phenegan/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.2/microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

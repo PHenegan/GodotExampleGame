@@ -1,0 +1,9 @@
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/bin/Debug/Platformer.dll
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/bin/Debug/Platformer.pdb
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/obj/Debug/Platformer.csproj.AssemblyReference.cache
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/obj/Debug/Platformer.GeneratedMSBuildEditorConfig.editorconfig
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/obj/Debug/Platformer.AssemblyInfoInputs.cache
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/obj/Debug/Platformer.AssemblyInfo.cs
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/obj/Debug/Platformer.csproj.CoreCompileInputs.cache
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/obj/Debug/Platformer.dll
+/home/phenegan/Documents/Godot Projects/GDQuest Tutorial/platformer/.mono/temp/obj/Debug/Platformer.pdb
