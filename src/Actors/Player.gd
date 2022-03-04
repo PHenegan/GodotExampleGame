@@ -26,11 +26,8 @@ func _physics_process(delta: float) -> void:
 	var is_jump_interrupted = (Input.is_action_just_released("jump") and _velocity.y < 0.0) 
 	
 	# handles double jumping
-	print("Is on ground? " + str(is_on_floor()))
 	_jumps_left = update_jump_count(_jumps_left, is_on_floor())
 	
-	# multiplies the x direction _velocity in order to get 
-	_velocity = _velocity * direction
 	# calculates the direction that the _velocity needs to go in
 	_velocity = calculate_move_velocity(_velocity, direction, speed, maxSpeed, is_jump_interrupted)
 	
@@ -59,7 +56,8 @@ func calculate_move_velocity(
 	
 	# The x direction is pretty simple, just multiplies the magnitude of the speed
 	# by the directional vector
-	out.x = speed.x * direction.x
+	out.x = direction.x * speed.x
+	
 	out.y += gravity * get_physics_process_delta_time()
 	
 	# The y-axis is facing down, so moving up on the screen means moving in the
@@ -71,7 +69,9 @@ func calculate_move_velocity(
 	
 	#finally, checks the movement speed against their maximum possible values
 	out.x = min(out.x, maxSpeed.x)
+	out.x = max(out.x, -maxSpeed.x)
 	out.y = min(out.y, maxSpeed.y)
+	out.y = max(out.y, -maxSpeed.y)
 	
 	return out
 
@@ -91,12 +91,9 @@ func calculate_stomp_velocity(
 func update_jump_count(current: int, reset: bool) -> int:
 	var out: int
 	if (reset):
-		print("Ground jump!")
 		out = max(MAX_AIR_JUMPS, current)
 	elif (Input.is_action_just_pressed("jump") && current > 0):
-		print("Air jump!")
 		out = _jumps_left - 1
 	else:
 		out = _jumps_left
-	print("Jumps left: " + str(_jumps_left))
 	return out
