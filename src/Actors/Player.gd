@@ -1,8 +1,22 @@
 extends Actor
 
+# Maximum number of air jumps the player has by default
 const MAX_AIR_JUMPS = 1
 # Number of air jumps the player has left
-var _jumps_left: int
+var _jumps_left = MAX_AIR_JUMPS
+
+# the impulse the player gets whenever they stomp on an enemy
+export var stomp_impulse = 1000.0
+
+
+func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
+	queue_free()
+
+func _on_EnemyDetector_area_entered(area: Area2D) -> void:
+	# updates the jump count as if the player touched the ground
+	_jumps_left = update_jump_count(_jumps_left, true)
+	# makes the player bounce when they kill the enemy
+	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
 
 func _physics_process(delta: float) -> void:
 	#left and right movement
@@ -12,7 +26,8 @@ func _physics_process(delta: float) -> void:
 	var is_jump_interrupted = (Input.is_action_just_released("jump") and _velocity.y < 0.0) 
 	
 	# handles double jumping
-	_jumps_left = update_jump_count()
+	print("Is on ground? " + str(is_on_floor()))
+	_jumps_left = update_jump_count(_jumps_left, is_on_floor())
 	
 	# multiplies the x direction _velocity in order to get 
 	_velocity = _velocity * direction
@@ -60,13 +75,28 @@ func calculate_move_velocity(
 	
 	return out
 
+# Applies the given impulse to the given velocity in the upwards direction
+func calculate_stomp_velocity(
+		linear_velocity: Vector2,
+		impulse: float
+	) -> Vector2:
+	var out: = linear_velocity
+	out.y = -impulse
+	
+	return out
+	
+	
+
 # Finds out how many jumps the player should have
-func update_jump_count() -> int:
+func update_jump_count(current: int, reset: bool) -> int:
 	var out: int
-	if (is_on_floor()):
-		out = MAX_AIR_JUMPS
-	elif (Input.is_action_just_pressed("jump")):
+	if (reset):
+		print("Ground jump!")
+		out = max(MAX_AIR_JUMPS, current)
+	elif (Input.is_action_just_pressed("jump") && current > 0):
+		print("Air jump!")
 		out = _jumps_left - 1
 	else:
 		out = _jumps_left
+	print("Jumps left: " + str(_jumps_left))
 	return out
