@@ -35,7 +35,8 @@ position = Vector2( 3073.33, 796 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 261.333, 432 )
-speed = Vector2( 600, 1200 )
+scale = Vector2( 1.00173, 1 )
+speed = Vector2( 600, 1300 )
 gravity = 2700.0
 
 [node name="Camera" parent="Player" index="3"]
